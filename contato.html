@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<script src="./support-v2.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Fale com um Especialista | Alltomatiza</title>
+  <meta name="description" content="Fale com um especialista da Alltomatiza sobre automação de processos, integração de sistemas e dados. Resposta em até um dia útil, direto de quem constrói.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #F5F5F7; color: #1D1D1F; font-family: 'Geist', 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #0057FF; }
+    a:hover { color: #0046D1; }
+    ::selection { background: #0057FF; color: #FFFFFF; }
+    input, textarea { font-family: 'Geist', 'Helvetica Neue', sans-serif; }
+    @keyframes vctrFadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+
+<!-- Rota de produção: /contato -->
+<div style="position:fixed;top:0;left:0;right:0;z-index:50">
+<header style="background:rgba(245,245,247,0.8);backdrop-filter:saturate(1.8) blur(18px);-webkit-backdrop-filter:saturate(1.8) blur(18px);border-bottom:1px solid rgba(29,29,31,0.08);position:relative">
+  <nav aria-label="Navegação principal" style="max-width:1180px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="index.html" aria-label="Alltomatiza, página inicial" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#1D1D1F">
+      <img src="assets/alpize-mark.svg" alt="" style="height:28px;width:auto;display:block">
+      <img src="assets/alltomatiza-wordmark.svg" alt="Alltomatiza" style="height:20px;width:auto;display:block">
+    </a>
+    <sc-if value="{{ hDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:30px">
+        <sc-for list="{{ hLinks }}" as="lnk" hint-placeholder-count="3">
+          <a href="{{ lnk.href }}" style="font-family:'Geist','Helvetica Neue',sans-serif;font-size:14.5px;font-weight:{{ lnk.weight }};color:{{ lnk.color }};text-decoration:none;letter-spacing:-0.01em;transition:color .2s ease" style-hover="color:#1D1D1F">{{ lnk.label }}</a>
+        </sc-for>
+        <a href="contato.html" style="font-family:'Geist','Helvetica Neue',sans-serif;font-size:14px;font-weight:600;color:#FFFFFF;background:#0057FF;padding:9px 18px;border-radius:999px;text-decoration:none;letter-spacing:-0.01em;transition:background .2s ease" style-hover="background:#0046D1">Fale com um Especialista</a>
+      </div>
+    </sc-if>
+    <sc-if value="{{ hMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ hAlternarMenu }}" aria-label="Abrir menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:12px 8px;cursor:pointer">
+        <span style="display:block;width:20px;height:2px;background:#1D1D1F;border-radius:2px"></span>
+        <span style="display:block;width:20px;height:2px;background:#1D1D1F;border-radius:2px"></span>
+      </button>
+    </sc-if>
+  </nav>
+  <sc-if value="{{ hMenuAberto }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:64px;left:0;right:0;background:rgba(245,245,247,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(29,29,31,0.08);padding:8px 24px 24px;display:flex;flex-direction:column;box-shadow:0 24px 48px rgba(0,0,0,0.08)">
+      <sc-for list="{{ hLinksMobile }}" as="lnk" hint-placeholder-count="3">
+        <a href="{{ lnk.href }}" style="font-family:'Geist','Helvetica Neue',sans-serif;font-size:17px;font-weight:600;color:#1D1D1F;text-decoration:none;padding:14px 4px;border-bottom:1px solid rgba(29,29,31,0.06)">{{ lnk.label }}</a>
+      </sc-for>
+      <a href="contato.html" style="margin-top:16px;font-family:'Geist','Helvetica Neue',sans-serif;text-align:center;font-size:15px;font-weight:600;color:#FFFFFF;background:#0057FF;padding:13px 18px;border-radius:999px;text-decoration:none">Fale com um Especialista</a>
+    </div>
+  </sc-if>
+</header>
+</div>
+
+<main style="padding-top:65px">
+  <section data-screen-label="Contato" aria-label="Contato" style="max-width:1180px;margin:0 auto;padding:104px 24px 120px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:start">
+
+      <!-- Coluna esquerda: título + o que esperar -->
+      <div>
+        <p data-reveal="0" style="font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#6E6E73;margin:0 0 22px">Contato</p>
+        <h1 data-reveal="80" style="font-size:clamp(42px,6vw,72px);line-height:1.04;letter-spacing:-0.035em;font-weight:700;margin:0;max-width:12ch">Vamos conversar.</h1>
+        <p data-reveal="160" style="font-size:19px;line-height:1.6;color:#6E6E73;max-width:44ch;margin:22px 0 0;text-wrap:pretty">Conte o que trava a sua operação. Sem formulário de dez etapas, sem robô de vendas. A mensagem chega em quem constrói.</p>
+        <div style="margin-top:44px;display:flex;flex-direction:column;gap:22px">
+          <div data-reveal="200" style="border-top:1px solid rgba(29,29,31,0.12);padding-top:18px">
+            <h2 style="font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em">Resposta em até um dia útil</h2>
+            <p style="font-size:15px;line-height:1.6;color:#6E6E73;margin:0">Direta, de um especialista, não de uma fila de atendimento.</p>
+          </div>
+          <div data-reveal="280" style="border-top:1px solid rgba(29,29,31,0.12);padding-top:18px">
+            <h2 style="font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em">Primeira conversa sem compromisso</h2>
+            <p style="font-size:15px;line-height:1.6;color:#6E6E73;margin:0">Entendemos o cenário e apontamos um caminho, mesmo que ele não passe pela gente.</p>
+          </div>
+          <div data-reveal="360" style="border-top:1px solid rgba(29,29,31,0.12);padding-top:18px">
+            <h2 style="font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em">E-mail direto</h2>
+            <!-- Substituir pelo e-mail oficial da Alltomatiza -->
+            <p style="font-size:15px;line-height:1.6;color:#6E6E73;margin:0">Prefere escrever? <a href="mailto:contato@alltomatiza.com.br" style="font-weight:600;text-decoration:none">contato@alltomatiza.com.br</a></p>
+          </div>
+          <div data-reveal="420" style="border-top:1px solid rgba(29,29,31,0.12);padding-top:18px">
+            <h2 style="font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em">Telefone</h2>
+            <p style="font-size:15px;line-height:1.6;color:#6E6E73;margin:0">Prefere ligar ou chamar no WhatsApp? <a href="https://wa.me/5511964985178" target="_blank" rel="noopener" style="font-weight:600;text-decoration:none">(11) 96498-5178</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna direita: formulário minimalista -->
+      <div data-reveal="240" style="background:#FFFFFF;border:1px solid rgba(29,29,31,0.06);border-radius:28px;padding:clamp(28px,4vw,44px);box-shadow:0 24px 56px rgba(29,29,31,0.06)">
+        <sc-if value="{{ naoEnviado }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ enviar }}" aria-label="Formulário de contato" style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="campo-nome" style="font-size:14px;font-weight:600;letter-spacing:-0.01em">Nome</label>
+              <input id="campo-nome" name="nome" type="text" required placeholder="Como podemos te chamar?" style="box-sizing:border-box;width:100%;font-size:16px;padding:13px 16px;border-radius:12px;border:1px solid rgba(29,29,31,0.14);background:#F5F5F7;color:#1D1D1F;outline:none;transition:border-color .2s ease, box-shadow .2s ease" style-focus="border-color:#0057FF;box-shadow:0 0 0 3px rgba(0,87,255,0.15);background:#FFFFFF">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="campo-telefone" style="font-size:14px;font-weight:600;letter-spacing:-0.01em">Telefone</label>
+              <input id="campo-telefone" name="telefone" type="tel" placeholder="(11) 90000-0000" onInput="{{ formatarTelefone }}" style="box-sizing:border-box;width:100%;font-size:16px;padding:13px 16px;border-radius:12px;border:1px solid rgba(29,29,31,0.14);background:#F5F5F7;color:#1D1D1F;outline:none;transition:border-color .2s ease, box-shadow .2s ease" style-focus="border-color:#0057FF;box-shadow:0 0 0 3px rgba(0,87,255,0.15);background:#FFFFFF">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="campo-email" style="font-size:14px;font-weight:600;letter-spacing:-0.01em">E-mail corporativo</label>
+              <input id="campo-email" name="email" type="email" required placeholder="voce@suaempresa.com.br" style="box-sizing:border-box;width:100%;font-size:16px;padding:13px 16px;border-radius:12px;border:1px solid rgba(29,29,31,0.14);background:#F5F5F7;color:#1D1D1F;outline:none;transition:border-color .2s ease, box-shadow .2s ease" style-focus="border-color:#0057FF;box-shadow:0 0 0 3px rgba(0,87,255,0.15);background:#FFFFFF">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="campo-empresa" style="font-size:14px;font-weight:600;letter-spacing:-0.01em">Empresa</label>
+              <input id="campo-empresa" name="empresa" type="text" placeholder="Nome da empresa" style="box-sizing:border-box;width:100%;font-size:16px;padding:13px 16px;border-radius:12px;border:1px solid rgba(29,29,31,0.14);background:#F5F5F7;color:#1D1D1F;outline:none;transition:border-color .2s ease, box-shadow .2s ease" style-focus="border-color:#0057FF;box-shadow:0 0 0 3px rgba(0,87,255,0.15);background:#FFFFFF">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="campo-mensagem" style="font-size:14px;font-weight:600;letter-spacing:-0.01em">O que você quer destravar?</label>
+              <textarea id="campo-mensagem" name="mensagem" required rows="5" placeholder="Ex.: fechamos o mês copiando dados do ERP para planilhas…" style="box-sizing:border-box;width:100%;font-size:16px;line-height:1.5;padding:13px 16px;border-radius:12px;border:1px solid rgba(29,29,31,0.14);background:#F5F5F7;color:#1D1D1F;outline:none;resize:vertical;transition:border-color .2s ease, box-shadow .2s ease" style-focus="border-color:#0057FF;box-shadow:0 0 0 3px rgba(0,87,255,0.15);background:#FFFFFF"></textarea>
+            </div>
+            <sc-if value="{{ erro }}" hint-placeholder-val="{{ false }}">
+              <p role="alert" style="font-size:14px;color:#D6432A;margin:0;text-align:center">{{ erro }}</p>
+            </sc-if>
+            <button type="submit" disabled="{{ enviando }}" style="font-family:'Geist','Helvetica Neue',sans-serif;font-size:16px;font-weight:600;color:#FFFFFF;background:#0057FF;padding:15px 28px;border-radius:999px;border:none;cursor:pointer;margin-top:6px;transition:background .2s ease;opacity:{{ enviandoOpacidade }}" style-hover="background:#0046D1">{{ textoBotao }}</button>
+            <p style="font-size:12.5px;line-height:1.5;color:#6E6E73;margin:0;text-align:center">Usamos seus dados apenas para responder a esta mensagem.</p>
+          </form>
+        </sc-if>
+        <sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="text-align:center;padding:40px 8px;display:flex;flex-direction:column;gap:14px;align-items:center">
+            <div style="width:52px;height:52px;border-radius:999px;background:rgba(0,87,255,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;color:#0057FF">✓</div>
+            <h2 style="font-size:26px;font-weight:700;letter-spacing:-0.02em;margin:0">Mensagem enviada.</h2>
+            <p style="font-size:16px;line-height:1.6;color:#6E6E73;margin:0;max-width:36ch;text-wrap:pretty">Obrigado, {{ nomeEnviado }}. Um especialista responde em até um dia útil.</p>
+            <button onClick="{{ novaMensagem }}" style="font-family:'Geist','Helvetica Neue',sans-serif;font-size:15px;font-weight:600;color:#0057FF;background:rgba(0,87,255,0.08);padding:11px 22px;border-radius:999px;border:none;cursor:pointer;margin-top:8px;transition:background .2s ease" style-hover="background:rgba(0,87,255,0.16)">Enviar outra mensagem</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="border-top:1px solid rgba(29,29,31,0.08)">
+  <div style="max-width:1180px;margin:0 auto;padding:56px 24px 40px;display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between">
+    <div style="max-width:320px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/alpize-mark.svg" alt="" style="height:20px;width:auto;display:block">
+        <img src="assets/alltomatiza-wordmark.svg" alt="Alltomatiza" style="height:17px;width:auto;display:block">
+      </div>
+      <p style="font-size:14px;line-height:1.6;color:#6E6E73;margin:14px 0 0;text-wrap:pretty">Automação de processos, engenharia de dados e business intelligence para empresas que querem escalar sem crescer o caos.</p>
+    </div>
+    <nav aria-label="Rodapé institucional" style="display:flex;flex-direction:column;gap:10px;min-width:140px">
+      <span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#6E6E73">Navegue</span>
+      <a href="index.html" style="font-size:14.5px;color:#1D1D1F;text-decoration:none" style-hover="color:#0057FF">Início</a>
+      <a href="solucoes.html" style="font-size:14.5px;color:#1D1D1F;text-decoration:none" style-hover="color:#0057FF">Soluções</a>
+      <a href="sobre.html" style="font-size:14.5px;color:#1D1D1F;text-decoration:none" style-hover="color:#0057FF">Sobre</a>
+    </nav>
+    <nav aria-label="Rodapé conteúdo" style="display:flex;flex-direction:column;gap:10px;min-width:140px">
+      <span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#6E6E73">Conteúdo</span>
+      <a href="contato.html" style="font-size:14.5px;color:#1D1D1F;text-decoration:none" style-hover="color:#0057FF">Contato</a>
+    </nav>
+  </div>
+  <div style="max-width:1180px;margin:0 auto;padding:0 24px 40px">
+    <p style="font-size:13px;color:#6E6E73;margin:0;border-top:1px solid rgba(29,29,31,0.06);padding-top:24px">© 2026 Alltomatiza. Todos os direitos reservados.</p>
+  </div>
+</footer>
+<a href="https://wa.me/5511964985178?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Alltomatiza%20e%20quero%20entender%20melhor%20como%20voc%C3%AAs%20podem%20me%20ajudar." target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp" style="position:fixed;bottom:24px;right:24px;z-index:60;width:56px;height:56px;border-radius:999px;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px rgba(29,29,31,0.28);text-decoration:none;transition:transform .2s ease" style-hover="transform:scale(1.06)">
+  <svg viewBox="0 0 16 16" width="27" height="27" fill="#FFFFFF" aria-hidden="true"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.171-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.176-1.1-1.373-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.246c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.337-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;animacoes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interações&quot;}}">
+class Component extends DCLogic {
+  state = { hMobile: false, hMenuAberto: false, enviado: false, nome: '', enviando: false, erro: '' };
+
+  componentDidMount() {
+    document.documentElement.lang = 'pt-BR';
+    this._hMq = window.matchMedia('(max-width: 880px)');
+    this._onHMq = (e) => this.setState({ hMobile: e.matches, hMenuAberto: false });
+    if (this._hMq.matches) this.setState({ hMobile: true });
+    this._hMq.addEventListener('change', this._onHMq);
+    const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!(this.props.animacoes ?? true) || reduz) return;
+    if (document.visibilityState === 'hidden') return;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    const mostrar = (el) => {
+      el.style.transitionDelay = (el.getAttribute('data-reveal') || '0') + 'ms';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        mostrar(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    els.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .9s cubic-bezier(.2,.6,.2,1), transform .9s cubic-bezier(.2,.6,.2,1)';
+      io.observe(el);
+    });
+    this._io = io;
+    // Salvaguarda: nada pode ficar oculto permanentemente
+    this._revealFallback = setTimeout(() => {
+      els.forEach((el) => { if (getComputedStyle(el).opacity === '0') mostrar(el); });
+    }, 1500);
+  }
+
+  componentWillUnmount() { if (this._io) this._io.disconnect(); if (this._revealFallback) clearTimeout(this._revealFallback); if (this._hMq) this._hMq.removeEventListener('change', this._onHMq); }
+
+  renderVals() {
+    const __hBase = [
+      { label: 'Início', href: 'index.html', key: 'home' },
+      { label: 'Soluções', href: 'solucoes.html', key: 'solucoes' },
+      { label: 'Sobre', href: 'sobre.html', key: 'sobre' }
+    ];
+    const __hActive = 'contato';
+    const hLinks = __hBase.map((l) => ({ label: l.label, href: l.href, color: l.key === __hActive ? '#1D1D1F' : '#6E6E73', weight: l.key === __hActive ? 600 : 500 }));
+    const hLinksMobile = __hBase.map((l) => ({ label: l.label, href: l.href }));
+    const hDesktop = !this.state.hMobile;
+    const hMobile = this.state.hMobile;
+    const hMenuAberto = this.state.hMobile && this.state.hMenuAberto;
+    const hAlternarMenu = () => this.setState((s) => ({ hMenuAberto: !s.hMenuAberto }));
+    return {
+      hLinks, hLinksMobile, hDesktop, hMobile, hMenuAberto, hAlternarMenu,
+      enviado: this.state.enviado,
+      naoEnviado: !this.state.enviado,
+      enviando: this.state.enviando,
+      erro: this.state.erro,
+      nomeEnviado: this.state.nome || 'você',
+      textoBotao: this.state.enviando ? 'Enviando…' : 'Enviar mensagem',
+      enviandoOpacidade: this.state.enviando ? 0.7 : 1,
+      enviar: (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const dados = new FormData(form);
+        const nomeCompleto = (dados.get('nome') || '').toString().trim();
+        const nome = nomeCompleto.split(' ')[0];
+        this.setState({ enviando: true, erro: '' });
+        fetch('https://formsubmit.co/ajax/victorlopesguedes7@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: 'Novo contato pelo site Alltomatiza: ' + nomeCompleto,
+            Nome: nomeCompleto,
+            Telefone: dados.get('telefone') || '',
+            'E-mail': dados.get('email') || '',
+            Empresa: dados.get('empresa') || '',
+            Mensagem: dados.get('mensagem') || ''
+          })
+        })
+          .then((res) => { if (!res.ok) throw new Error('Falha no envio'); return res.json(); })
+          .then(() => { this.setState({ enviado: true, enviando: false, nome }); form.reset(); })
+          .catch(() => { this.setState({ enviando: false, erro: 'Não foi possível enviar agora. Tente novamente ou escreva para contato@alltomatiza.com.br.' }); });
+      },
+      novaMensagem: () => this.setState({ enviado: false, nome: '', erro: '' }),
+      formatarTelefone: (e) => {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+        if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+        else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        else if (v.length > 0) v = `(${v}`;
+        e.target.value = v;
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
